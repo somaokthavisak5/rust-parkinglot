@@ -125,6 +125,15 @@ fn main() {
             quay.free_full_transport();
         }
 
+        if generated_persons.len() == 0 {
+            println!("The queue is empty, you win!");
+        }
+
+        if quay.parked.len() == 4 && generated_persons.len() > 0 {
+            println!("The quay is full, you lose!");
+            break;
+        }
+
         canvas.present();
         ::std::thread::sleep(Duration::new(0, 1_000_000_000u32 / 60));
     }
